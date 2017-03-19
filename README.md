@@ -4,8 +4,8 @@ This is a React app fetching music data from Deezer's api, and presenting artist
 
 ## Table of contents
 * [Notes](#notes)
-* [Todo](#todos)
-* [Known bugs](#known-bugs)
+* [Todo](#todo)
+* [Issues](#issues)
 * [Setup](#user-content-setup)
 * [Running in dev mode](#user-content-running-in-dev-mode)
 * [Linting](#user-content-linting)
@@ -28,20 +28,18 @@ See also comments in the source files below.
 - [ ] Responsive images with src-set
 - [ ] Universal app/serverside rendering
 - [ ] Add microdata (schema.org)
-- [ ] Add testes (Karma or Jest, Nightwatch)
-- [ ] UI-improvements: loading spinner, transitions/animations. Hide search result on blur.
-- [ ] Error message when no albums found.
-- [ ] Other error handling (lost network, slow response eg)
-- [ ] Multi-language support.
+- [ ] UI-improvements: transitions/animations.
+- [ ] Hide search result on blur.
 - [ ] Accessibility (web-aria, wcag)
-- [ ] Add necessary code to run with https://zeit.co/now
+- [ ] Add testes (Karma or Jest, Nightwatch)
+- [ ] Multi-language support.
 
 
-## Known bugs
+## Issues
 
-- [ ] Some artists have no records. Clicking on some of theses artists gives no response (Eg Tony Kekko: http://api.deezer.com/artist/264972/albums)
-- [ ] Release date from album, not tracks. So listing this date per track isn’t necessarily correct.
+Release date from album, not tracks. So listing this date per track isn’t necessarily correct.
 
+The search function automatically fetches data after 300ms debounce (so we don't fetch data on every keystroke). So the submit button is really not necessary - it's just a dumb button. In an SSR-app this would have a purpose. But again: In a React music streaming app it's superfluous.
 
 
 ## App code
@@ -49,11 +47,11 @@ See also comments in the source files below.
 
 The app code is in these files:
 
-- [source/js/actions/deezer.js](/jtbolstad/deezer/tree/master/source/js/actions/deezer.js),
-- [source/js/reducers/deezer.js](/jtbolstad/deezer/tree/master/source/js/recucers/deezer.js),
-- [source/js/views/Deezer/ArtistSearch.jsx](/jtbolstad/deezer/tree/master/source/js/views/Deezer/ArtistSearch.jsx),
-- [source/js/views/routes.js](/jtbolstad/deezer/tree/master/source/js/views/routes.js),
-- [source/scss\*](/jtbolstad/deezer/tree/master/source/scss/),
+- [source/js/actions/deezer.js](//www.github.com/jtbolstad/deezer/tree/master/source/js/actions/deezer.js),
+- [source/js/reducers/deezer.js](//www.github.com/jtbolstad/deezer/tree/master/source/js/recucers/deezer.js),
+- [source/js/views/Deezer/ArtistSearch.jsx](//www.github.com/jtbolstad/deezer/tree/master/source/js/views/Deezer/ArtistSearch.jsx),
+- [source/js/views/routes.js](//www.github.com/jtbolstad/deezer/tree/master/source/js/views/routes.js),
+- [source/scss\*](//www.github.com/jtbolstad/deezer/tree/master/source/scss/),
 
 Scaffolding is from this [boilerplate](https://github.com/Stanko/react-redux-webpack2-boilerplate) project.
 

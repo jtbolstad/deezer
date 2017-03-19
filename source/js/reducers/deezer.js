@@ -2,7 +2,6 @@ const initialState = {
   artists: [],
   albums: [],
   tracks: [],
-  lastFetched: null,
   isLoading: false,
   error: null,
 };
@@ -16,7 +15,8 @@ export default function deezer(state = initialState, action) {
         error: null };
     case 'LOAD_ARTISTS_SUCCESS':
       return { ...state,
-        artists: action.payload.data,
+        // Filter out arists without albums
+        artists: action.payload.data.filter(a => a.nb_album > 0),
         isLoading: false };
     case 'LOAD_ARTISTS_FAILURE':
       return { ...state,

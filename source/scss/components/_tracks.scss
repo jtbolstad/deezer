@@ -4,78 +4,85 @@
 // -------------------------------------------------
 
 .tracks {
+
   position: relative; // To place the cover image absolutely
   margin-top: 3 * $spacing;
   background: $color-background-lighter;
 
   img {
     position: absolute;
-    top: $spacing;
+    top: -150px;
     left: 1.5 * $spacing;
     width: $cover-size;
     transition: top 0.2s
   }
-  img:before {
-    display: block;
-    content: 'aaa';
-    border-top: 1px solid red;
-  }
+
   h3 {
     font-size: $font-size-l;
     margin: 0;
   }
+
   .tracks--title {
     @extend .title;
   }
 
-
-  @media (max-width:700px) {
-    img {
-      top: -150px;
-    }
-    table {
-      margin-top: 170px;
-    }
-  }
-
-
   table {
     width: 100%;
+    margin-top: 170px;
     border-bottom: ($spacing * 3) solid $color-background-lighter;
     color: $color-text-bright;
     font-size: $font-size-s;
     transition: margin-top 0.2s;
 
     thead {
-      tr:nth-child(1) td:nth-child(1) {
-      }
+
       background: $color-background;
+
       td {
         border: none;
       }
     }
+
     tbody {
       background: $color-background-lighter;
     }
+
     td {
       padding: $spacing $spacing $spacing-bottom 0;
       border-bottom: $border-dark;
-      &:nth-child(1) {
+
+      &:nth-child(1) {  // Empty first column
         width: $cover-size + $spacing * 2;
         border-bottom: none;
       }
+
       &:nth-child(2) {  // Track #
         border-bottom: none;
         padding-left: $spacing;
       }
+
       &:nth-child(3) {} // Title
+
       &:nth-child(4) {  // Artist
         min-width: 130px;
       }
+
       &:nth-child(5),   // Duration
+
       &:nth-child(6) {  // Release
         padding: $spacing $spacing*2 $spacing-bottom $spacing*2;
       }
+    }
+  }
+
+  // Cover image is positioned above track listing on small devices.
+  // On larger devices cover image is positioned to the left
+  @media (min-width: 700px) {
+    img {
+      top: $spacing;
+    }
+    table {
+      margin-top: 0;
     }
   }
 }

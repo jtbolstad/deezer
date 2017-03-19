@@ -130,7 +130,6 @@ class ArtistSearch extends React.Component {
 
       <div className="main">
 
-
         <div className='search' role='search'>
           <form>
             <input type='text' value={ this.state.artistFilter } onChange={ this.handleChange } onBlur={ this.tast('blur') } placeholder={ 'Search here' } />
@@ -143,7 +142,7 @@ class ArtistSearch extends React.Component {
           // Display only if artistFilter is set
         this.state.artistFilter &&
         this.props.artists && this.props.artists.length > 0 &&
-          <div style={ { position: 'absolute' } } >
+          <div className='searchResult'>
             <div className='arrow' />
             <Artists
               artists={ this.props.artists }
@@ -151,6 +150,14 @@ class ArtistSearch extends React.Component {
             />
           </div>
         }
+
+
+        <div className='loaderWrapper'>
+          { // LOADING SPINNER
+          this.props.isLoading  && this.state.artistFilter ?
+            <div className='loader'></div> : null
+          }
+        </div>
 
 
         { // ALBUM LISTING
@@ -272,6 +279,7 @@ const Tracks = (props) =>
 ArtistSearch.propTypes = {
   params: React.PropTypes.object,
   dispatch: React.PropTypes.func,
+  isLoading: React.PropTypes.boolean,
   artists: React.PropTypes.array,
   albums: React.PropTypes.array,
   tracks: React.PropTypes.array,
@@ -282,6 +290,7 @@ const mapStateToProps = state => ({
   artists: state.deezer.artists,
   albums: state.deezer.albums,
   tracks: state.deezer.tracks,
+  isLoading: state.deezer.isLoading,
 });
 
 
