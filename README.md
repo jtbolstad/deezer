@@ -1,7 +1,10 @@
-# React and Redux, Webpack 2 boilerplate
+# Deezer-app
+
+This is a React app fetching music data from Deezer's api, and presenting artist lists, albums and tracks as in a music player.
 
 ## Table of contents
-* [Todos](#Todo)
+* [Notes](#notes)
+* [Todo](#todos)
 * [Known bugs](#known-bugs)
 * [Setup](#user-content-setup)
 * [Running in dev mode](#user-content-running-in-dev-mode)
@@ -41,7 +44,7 @@ See also comments in the source files below.
 
 
 
-## App code 
+## App code
 
 
 The app code is in these files:
