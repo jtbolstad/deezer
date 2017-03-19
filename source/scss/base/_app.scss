@@ -1,0 +1,59 @@
+
+
+// APP
+// -------------------------------------------------
+
+body {
+  font-family: $font-set;
+  background: $color-background;
+  color: $color-text-regular;
+  padding: 6 * $spacing;
+  user-select: none;
+}
+a {
+  text-decoration: none;
+}
+.primary_color {
+  color: $color-contrast;
+}
+
+.primary_background {
+  background-color: $color-contrast;
+}
+.selectable {
+  user-select: auto
+}
+.rightAlign {
+  text-align: right;
+}
+
+.title {
+  font-size: $font-size-l;
+}
+
+
+// APP COMPONENTS
+// -------------------------------------------------
+
+.Deezer {
+  width: 100%;
+  max-width: $app-width;
+  margin: 0 auto;
+  color: $color-text-regular;
+}
+
+.search,
+.artists,
+.albums,
+.tracks {
+  width: 100%;
+  border-radius: $rounded-corners;
+}
+
+
+
+
+
+
+
+

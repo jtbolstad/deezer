@@ -1,0 +1,20 @@
+
+/**
+ * CSS/SCSS
+ */
+
+@import "base/config";
+@import "base/normalize";
+@import "base/global";
+
+/**
+ * Separate scss file for each component/sub-components.
+ *
+ * CSS attribute ordering (ref https://github.com/necolas/idiomatic-css):
+ *   postioning, display/box-model, colour, text, other
+ */
+
+@import "components/albums";
+@import "components/artists_search_form";
+@import "components/artists_search_result";
+@import "components/tracks";

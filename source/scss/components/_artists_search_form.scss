@@ -1,0 +1,40 @@
+
+
+// SEARCH FORM
+// -------------------------------------------------
+
+.search {
+
+  form {
+    display:flex
+  }
+
+  input {
+    padding: $spacing;
+    border-radius: $rounded-corners;
+    font-size: $font-size-l;
+  }
+
+  [type=text] {
+    height: 50px;
+    width: 100%;
+    Xwidth: $app-width - $cover-size - 3 * $spacing;
+    border: none;
+    color: $color-text-regular;
+    background: $color-background-lighter;
+    &:focus {
+      outline: none
+    }
+  }
+
+  [type="submit"],
+  [type="button"] {
+    position: relative;
+    width: $cover-size;
+    height: 50px;
+    margin-left: 3 * $spacing-bottom;
+    border: none;
+    color: black;
+    text-transform: uppercase;
+  }
+}

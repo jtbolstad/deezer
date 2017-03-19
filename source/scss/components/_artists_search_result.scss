@@ -1,0 +1,29 @@
+
+
+// SEARCH RESULT - ARTISTS
+// -------------------------------------------------
+
+.artists {
+  width: $app-width - $cover-size - 3 * $spacing;
+  padding: $spacing*2 $spacing;
+  background: $color-background-lighter;
+  font-size: $font-size-s;
+  .title {
+    margin-bottom: $spacing-bottom;
+    color: $color-text-regular;
+  }
+  a {
+    display: block;
+    padding: $spacing;
+    margin: 0 $spacing-l;
+    border-bottom: $border-dark;
+    color: $color-text-regular;
+  }
+}
+
+.arrow {
+  width: 12px;
+  height: 8px;
+  margin: 4px 0 0 48px;
+  background: no-repeat url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='8' width='12'><path d='M0,12 L6,0 L12,12' style='fill:#{$color-background-lighter}'/></svg>")
+}

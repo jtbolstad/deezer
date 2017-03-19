@@ -1,0 +1,60 @@
+
+
+//ALBUMS
+// -------------------------------------------------
+
+.albums {
+  .albums--grid {
+    padding-left: $spacing;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // flex: 1;
+    // max-height: 375px;
+    // overflow-y: auto;
+  }
+  .albums--grid:after {
+    content: "";
+    flex: auto;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  .albums--title {
+    @extend .title;
+    margin: ($spacing * 2) 0 ($spacing-bottom * 2);
+
+    &:nth-child(1) {
+      margin-top: $spacing * 5;
+      padding-bottom: $spacing * 2;
+      border-bottom: $border-light;
+      color: $color-text-bright;
+    }
+    &:nth-child(2) {
+      padding-left: $spacing;
+      color: $color-contrast;
+      text-transform: uppercase;
+    }
+  }
+  .album--container {
+    float: left;
+    overflow: hidden;
+    width: $cover-size;
+    margin-bottom: $spacing * 2;
+    margin-right: $spacing-m * 2; // For rows with <5 albums
+    img {
+      width: $cover-size;
+      vertical-align: bottom;
+    }
+  }
+  .album--title {
+    height: 32px;
+    margin-top: $spacing;
+    overflow: hidden;
+    font-size: $font-size-s;
+    text-align: center;
+  }
+}
+

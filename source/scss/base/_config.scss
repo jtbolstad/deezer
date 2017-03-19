@@ -1,0 +1,38 @@
+
+
+//
+// Variables
+// -------------------------------------------------
+
+    // COLORS & SUCH
+    // -------------------------------------------------
+    $color-background:          #212121;
+    $color-background-lighter:  #292929;
+    $color-contrast:            #00ffff;
+    $color-text-regular:        #8a8a8a;
+    $color-text-bright:          #ffffff;
+
+    $border-dark:     2px solid $color-background;
+    $border-light:    2px solid $color-background-lighter;
+    $rounded-corners: 3px;
+
+    // FONTS
+    // -------------------------------------------------
+    $font-set: "Overpass";
+    $font-size-base:  16px;
+    $font-size-s:     13px;
+    $font-size-m:     16px;
+    $font-size-l:     18px;
+
+    // LAYOUT
+    // -------------------------------------------------
+    $app-width:      800px;
+    $spacing:        10px;   // For margins and padding
+    $spacing-ratio:  12/10;  // Top vs bottom
+
+    // For symmetry bottom padding should be smaller than top/left/right.
+    $spacing-bottom: $spacing / $spacing-ratio;
+    $spacing-m:      $spacing * $spacing-ratio;
+    $spacing-l:      $spacing * $spacing-ratio * $spacing-ratio;
+
+    $cover-size:     134px;
