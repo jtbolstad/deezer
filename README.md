@@ -1,77 +1,60 @@
 # React and Redux, Webpack 2 boilerplate
 
 ## Table of contents
-* [What is this?](#user-content-what-is-this)
-* [Features](#user-content-features)
+* [Todos](#Todo)
+* [Known bugs](#known-bugs)
 * [Setup](#user-content-setup)
 * [Running in dev mode](#user-content-running-in-dev-mode)
-* [Build (production)](#user-content-build-production)
-* [Running in preview production mode](#user-content-running-in-preview-production-mode)
 * [Linting](#user-content-linting)
-* [Git hooks](#user-content-git-hooks)
-* [Changelog](#user-content-changelog)
 
 
-## What is this?
+## Notes
 
-Boilerplate I extracted from a small real world project.
+Personally I prefer file lengths <300 lines, with 500 lines as an absolute maximum.
 
-~~Webpack 2 is still in beta, but at this point is the only version
-that I managed to run everything I wanted, including hot module replacement.~~
+Offline support for web apps are on the rise, with Progressive Web Apps. But because of very limited local storage for web browsers, this is less interesting for a music streaming app.
 
-This boilerplate includes complete, minimal react app.
-By complete I mean it has examples for:
+The css/scss for this project is in a separate folder, with one scss file for each component. But I like the idea of having all files/code for a component (jsx, js with actions/reducers, tests etc) in the same folder. Styled components with more styling in the components is also growing.
 
-- components (both container/views and regular ones)
-- routes
-- reducers (redux)
-- actions (both sync and async),
-- SASS (with autoprefixer)<sup>1</sup>
-- dummy API
-- using assets (in CSS and components)
-- imports relative to the app root
+The local dev server acts as an API proxy, forwarding requests to www.deezer.com/api.
 
-![Example dashboard](http://i.imgur.com/z4Cpmdb.png)
+See also comments in the source files below.
 
-<sup>1</sup> Using source maps breaks urls in the CSS loader - https://github.com/webpack/css-loader/issues/232. Try [this](https://github.com/webpack/css-loader/issues/232#issuecomment-240449998) to fix it (but it breaks testing from local network).
+## Todo
 
-## Features
+- [ ] Responsive images with src-set
+- [ ] Universal app/serverside rendering
+- [ ] Add microdata (schema.org)
+- [ ] Add testes (Karma or Jest, Nightwatch)
+- [ ] UI-improvements: loading spinner, transitions/animations. Hide search result on blur.
+- [ ] Error message when no albums found.
+- [ ] Other error handling (lost network, slow response eg)
+- [ ] Multi-language support.
+- [ ] Accessibility (web-aria, wcag)
+- [ ] Add necessary code to run with https://zeit.co/now
 
-- [x] React
-- [x] React router
-- [x] Redux
-- [x] Redux Thunk
-- [x] Redux Dev Tools
-- [x] Immutable reducer data
-- [x] Webpack 2 (development and production config)
-- [x] Hot Module Replacement
-- [x] Babel - static props, decorators
-- [x] SASS with autoprefixing
-- [x] Webpack dashboard
-- [x] Linting
-- [x] Included `es6-promise` and `isomorphic-fetch`
-- [x] Preview production build
-- [x] File imports relative to the app root
-- [x] Git hooks - lint before push
 
-## TODO
+## Known bugs
 
-- [ ] Tree shaking build
-- [ ] Switch to [redux-saga](https://github.com/redux-saga/redux-saga)
-- [ ] Universal rendering
-- [ ] Server async data
-- [ ] Internationalization
+- [ ] Some artists have no records. Clicking on some of theses artists gives no response (Eg Tony Kekko: http://api.deezer.com/artist/264972/albums)
+- [ ] Release date from album, not tracks. So listing this date per track isn’t necessarily correct.
 
-Other nice to have features
 
-- [ ] Generating icon font from SVGs
-- [ ] Modernizr
-- [ ] Google analytics
-- [ ] Error reporting (not sure if this should be the part of the boilerplate)
+
+## App code 
+
+Scaffolding is from a [boilerplate](https://github.com/Stanko/react-redux-webpack2-boilerplate) project.
+
+The app code is in these files:
+
+[source/js/actions/deezer.js](/jtbolstad/deezer/tree/master/source/js/actions/deezer.js),
+[source/js/reducers/deezer.js](/jtbolstad/deezer/tree/master/source/js/recucers/deezer.js),
+[source/js/views/Deezer/ArtistSearch.jsx](/jtbolstad/deezer/tree/master/source/js/views/Deezer/ArtistSearch.jsx),
+[source/js/views/routes.js](/jtbolstad/deezer/tree/master/source/js/views/routes.js),
+[source/scss\*](/jtbolstad/deezer/tree/master/source/scss/),
+
 
 ## Setup
-
-Tested with node 6.x and 7.x
 
 ```
 $ npm install
@@ -86,49 +69,11 @@ $ npm start
 Visit `http://localhost:3000/` from your browser of choice.
 Server is visible from the local network as well.
 
-![Running in the iTerm2](http://i.imgur.com/IxamMBh.png)
 
 It is using [webpack dashboard](https://github.com/FormidableLabs/webpack-dashboard), so please note the following:
 
 **OS X Terminal.app users:** Make sure that **View → Allow Mouse Reporting** is enabled, otherwise scrolling through logs and modules won't work. If your version of Terminal.app doesn't have this feature, you may want to check out an alternative such as [iTerm2](https://www.iterm2.com/).
 
-## Build (production)
-
-Build will be placed in the `build` folder.
-
-```
-$ npm run build
-```
-
-If your app is not running on the server root you should change `publicPath` at two places.
-
-In `webpack.config.js` (ATM line 147):
-
-```
-output: {
-  path: buildPath,
-  publicPath: '/your-app/',
-  filename: 'app-[hash].js',
-},
-```
-
-and in `source/js/routes` (ATM line 9):
-
-```
-const publicPath = '/your-app/';
-```
-
-Don't forget the trailing slash (`/`). In development visit `http://localhost:3000/your-app/`.
-
-## Running in preview production mode
-
-This command will start webpack dev server, but with `NODE_ENV` set to `production`.
-Everything will be minified and served.
-Hot reload will not work, so you need to refresh the page manually after changing the code.
-
-```
-npm run preview
-```
 
 ## Linting
 
@@ -138,48 +83,3 @@ but some options are overridden to my personal preferences.
 ```
 $ npm run lint
 ```
-
-## Git hooks
-
-Linting pre-push hook is not enabled by default.
-It will prevent the push if lint task fails,
-but you need to add it manually by running:
-
-```
-npm run hook-add
-```
-
-To remove it, run this task:
-
-```
-npm run hook-remove
-```
-
-
-
------
-
-## Changelog
-
-#### 0.1.1
-
-* Fixed running it on Windows machines
-
-#### 0.1.0
-
-* Updated `webpack` to a stable version
-
-#### 0.0.3
-
-* Added pre-push git hook
-* Added `preview` task
-
-#### 0.0.2
-
-* Added Redux Dev Tools.
-* Renamed `client` to `source`
-* Made sure `logger` and `DevTools` are loaded only in development
-
-#### 0.0.1
-
-Initial release
