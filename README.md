@@ -43,15 +43,16 @@ See also comments in the source files below.
 
 ## App code 
 
-Scaffolding is from a [boilerplate](https://github.com/Stanko/react-redux-webpack2-boilerplate) project.
 
 The app code is in these files:
 
-[source/js/actions/deezer.js](/jtbolstad/deezer/tree/master/source/js/actions/deezer.js),
-[source/js/reducers/deezer.js](/jtbolstad/deezer/tree/master/source/js/recucers/deezer.js),
-[source/js/views/Deezer/ArtistSearch.jsx](/jtbolstad/deezer/tree/master/source/js/views/Deezer/ArtistSearch.jsx),
-[source/js/views/routes.js](/jtbolstad/deezer/tree/master/source/js/views/routes.js),
-[source/scss\*](/jtbolstad/deezer/tree/master/source/scss/),
+- [source/js/actions/deezer.js](/jtbolstad/deezer/tree/master/source/js/actions/deezer.js),
+- [source/js/reducers/deezer.js](/jtbolstad/deezer/tree/master/source/js/recucers/deezer.js),
+- [source/js/views/Deezer/ArtistSearch.jsx](/jtbolstad/deezer/tree/master/source/js/views/Deezer/ArtistSearch.jsx),
+- [source/js/views/routes.js](/jtbolstad/deezer/tree/master/source/js/views/routes.js),
+- [source/scss\*](/jtbolstad/deezer/tree/master/source/scss/),
+
+Scaffolding is from this [boilerplate](https://github.com/Stanko/react-redux-webpack2-boilerplate) project.
 
 
 ## Setup
