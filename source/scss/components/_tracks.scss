@@ -24,7 +24,7 @@
 
   .tracks--title {
     @extend .title;
-    padding-left: 10px;
+    padding: 0 0 $spacing*2 $spacing;
   }
 
   table {
@@ -50,11 +50,11 @@
     }
 
     td {
-      padding: $spacing $spacing * 2 $spacing-bottom 0;
+      padding: $spacing $spacing*2 $spacing $spacing;
       border-bottom: $border-dark;
 
       &:nth-child(1) {  // Empty first column
-        width: $cover-size + $spacing * 2;
+        width: $cover-size + $spacing*2;
         border-bottom: none;
       }
 
