@@ -2,6 +2,8 @@
 
 This is a React app fetching music data from Deezer's api, and presenting artist lists, albums and tracks as in a music player.
 
+T
+
 ## Table of contents
 * [Notes](#notes)
 * [Todo](#todo)
@@ -28,9 +30,9 @@ See also comments in the source files below.
 - [ ] Responsive images with src-set
 - [ ] Universal app/serverside rendering
 - [ ] Add microdata (schema.org)
+- [ ] Accessibility (web-aria, wcag)
 - [ ] UI-improvements: transitions/animations.
 - [ ] Hide search result on blur.
-- [ ] Accessibility (web-aria, wcag)
 - [ ] Add testes (Karma or Jest, Nightwatch)
 - [ ] Multi-language support.
 
@@ -47,10 +49,10 @@ The search function automatically fetches data after 300ms debounce (so we don't
 
 The app code is in these files:
 
-- [source/js/actions/deezer.js](//www.github.com/jtbolstad/deezer/tree/master/source/js/actions/deezer.js),
-- [source/js/reducers/deezer.js](//www.github.com/jtbolstad/deezer/tree/master/source/js/recucers/deezer.js),
-- [source/js/views/Deezer/ArtistSearch.jsx](//www.github.com/jtbolstad/deezer/tree/master/source/js/views/Deezer/ArtistSearch.jsx),
-- [source/js/views/routes.js](//www.github.com/jtbolstad/deezer/tree/master/source/js/views/routes.js),
+- [source/js/actions/deezer.js](//www.github.com/jtbolstad/deezer/tree/master/source/actions/artistSearch.js),
+- [source/js/reducers/deezer.js](//www.github.com/jtbolstad/deezer/tree/master/source/recucers/artistSearch.js),
+- [source/js/views/Deezer/ArtistSearch.jsx](//www.github.com/jtbolstad/deezer/tree/master/source/containers/ArtistSearch.jsx),
+- [source/js/views/routes.js](//www.github.com/jtbolstad/deezer/tree/master/source/routes.js),
 - [source/scss\*](//www.github.com/jtbolstad/deezer/tree/master/source/scss/),
 
 Scaffolding is from this [boilerplate](https://github.com/Stanko/react-redux-webpack2-boilerplate) project.
@@ -66,6 +68,12 @@ $ npm install
 
 ```
 $ npm start
+```
+
+Windows has some problems with Webpack Dashboard. Run webpack-dev-server direktly instead:
+
+```
+$ npm run start-win
 ```
 
 Visit `http://localhost:3000/` from your browser of choice.
