@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistSearch from 'views/Deezer/ArtistSearch';
+import ArtistSearch from 'components/Deezer/ArtistSearch';
 
 export default class Deezer extends React.Component {
 

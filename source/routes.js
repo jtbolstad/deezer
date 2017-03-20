@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
-import Deezer from 'views/Deezer';
-import NotFound from 'views/NotFound';
+import Deezer from 'components/Deezer';
+import NotFound from 'components/NotFound';
 
 export default class Routes extends Component {
 
