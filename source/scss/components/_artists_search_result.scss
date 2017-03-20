@@ -1,7 +1,8 @@
 
-
-// SEARCH RESULT - ARTISTS
-// -------------------------------------------------
+/**
+ * SEARCH RESULT - ARTISTS
+ * =========================================
+ */
 
 .searchResult {
 
@@ -10,9 +11,10 @@
 
   .artists {
 
-    //width: $app-width - $cover-size - 3 * $spacing;
-    width: calc(100vw - 257px);
-    max-width: 640px;
+    @media (min-width: $breakpoint) {
+      width: calc(100vw - 257px);
+      max-width: 640px;
+    }
 
     padding: $spacing*2 $spacing;
     background: $color-background-lighter;
@@ -41,6 +43,9 @@
     width: 12px;
     height: 8px;
     margin: 4px 0 0 48px;
-    background: no-repeat url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' height='8' width='12'><path d='M0,12 L6,0 L12,12' style='fill:#{$color-background-lighter}'/></svg>")
+    background: no-repeat url("data:image/svg+xml;utf8,
+      <svg xmlns='http://www.w3.org/2000/svg' height='8' width='12'>
+        <path d='M0,12 L6,0 L12,12' style='fill:#{$color-background-lighter}'/>
+      </svg>")
   }
 }

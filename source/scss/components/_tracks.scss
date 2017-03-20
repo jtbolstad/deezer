@@ -85,7 +85,7 @@
 
   // Cover image is positioned above track listing on small devices.
   // On larger devices cover image is positioned to the left
-  @media (min-width: 820px) {
+  @media (min-width: $breakpoint) {
     img {
       top: $spacing;
     }

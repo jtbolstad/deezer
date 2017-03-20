@@ -1,15 +1,21 @@
+
+/**
+ * ARTISTSEARCH - CONTAINER
+ * =========================================
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { first, debounce } from 'lodash';
-import { loadArtists, loadAlbums, loadTracks } from 'actions/deezer';
+import { loadArtists, loadAlbums, loadTracks } from 'actions/artistSearch';
 
 /**
  * Stateless functional components
  * =========================================
  */
-import Artists from 'components/Deezer/Artists.jsx'
-import Albums from 'components/Deezer/Albums.jsx'
-import Tracks from 'components/Deezer/Tracks.jsx'
+import Artists from 'components/ArtistSearch/Artists'
+import Albums from 'components/ArtistSearch/Albums'
+import Tracks from 'components/ArtistSearch/Tracks'
 
 
 /**

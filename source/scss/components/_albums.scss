@@ -1,10 +1,17 @@
 
-
-//ALBUMS
-// -------------------------------------------------
+/**
+ * SEARCH RESULT - ARTISTS
+ * =========================================
+ */
 
 .albums {
 
+  /**
+   * Overflow is set so only two rows of albums will be visble.
+   * Due to scrollbar showing/not showing, right edge of albums
+   * won't align perfectly with search button and track list.
+   * Would take some more time to find the optimal pattern for this.
+   */
 
   .albums--wrap {
     max-height: 390px;
@@ -20,11 +27,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
-  // .albums--grid:after {
-  //   content: "";
-  //   flex: auto;
-  // }
 
   a:hover {
     text-decoration: underline;
@@ -58,8 +60,10 @@
       vertical-align: bottom;
     }
 
-    // Four invisible placeholders are added to the end
-    // of the grid to keep "justify-content: space-between" happy
+    /**
+     * Four invisible placeholders are added to the end
+     * of the grid to keep "justify-content:space-between" happy
+     */
     &.placeholder {
       visibility: hidden;
       height: 0;

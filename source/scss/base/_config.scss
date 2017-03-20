@@ -29,6 +29,7 @@
     $app-width:      800px;
     $spacing:        10px;   // For margins and padding
     $spacing-ratio:  12/10;  // Top vs bottom
+    $breakpoint:     820px;
 
     // For symmetry bottom padding should be smaller than top/left/right.
     $spacing-bottom: $spacing / $spacing-ratio;

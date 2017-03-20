@@ -1,13 +1,17 @@
 
-
-// APP
-// -------------------------------------------------
+/**
+ * APP
+ * =========================================
+ */
 
 body {
   font-family: $font-set;
   background: $color-background;
   color: $color-text-regular;
-  padding: 6 * $spacing;
+  padding: 2 * $spacing;
+  @media(min-width: 820px) {
+    padding: 6 * $spacing;
+  }
   user-select: none;
 }
 a {
@@ -16,7 +20,6 @@ a {
 .primary_color {
   color: $color-contrast;
 }
-
 .primary_background {
   background-color: $color-contrast;
 }
@@ -32,8 +35,10 @@ a {
 }
 
 
-// APP COMPONENTS
-// -------------------------------------------------
+/**
+ * APP COMPONENTS
+ * =========================================
+ */
 
 .Deezer {
   width: 100%;

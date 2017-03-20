@@ -1,3 +1,9 @@
+
+/**
+ * ARTISTS
+ * =========================================
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -9,6 +15,5 @@ const Artists = (props) =>
       )
     }
   </div>;
-
 
 export default Artists;

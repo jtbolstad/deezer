@@ -7,6 +7,7 @@ const Albums = (props) =>
     <div className='albums--title'>Albums</div>
     <div className='albums--wrap'>
       <div className='albums--grid'>{
+
         props.albums.map((album, idx) => (
           <div key={ idx } className='album--container'>
             <Link
@@ -19,10 +20,15 @@ const Albums = (props) =>
             </Link>
           </div>)
         )}
+
+        { /* Invisible placeholders so flex-box "justify-content:space-between"
+           * works on rows with < 5 items. (First or last row.)
+           */}
         <div className='placeholder album--container'></div>
         <div className='placeholder album--container'></div>
         <div className='placeholder album--container'></div>
         <div className='placeholder album--container'></div>
+
       </div>
     </div>
   </div>;
