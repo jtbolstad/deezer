@@ -1,9 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { first, debounce } from 'lodash';
-
 import { loadArtists, loadAlbums, loadTracks } from 'actions/deezer';
+
+/**
+ * Stateless functional components
+ * =========================================
+ */
+import Artists from 'components/Deezer/Artists.jsx'
+import Albums from 'components/Deezer/Albums.jsx'
+import Tracks from 'components/Deezer/Tracks.jsx'
+
 
 /**
  *  Main Component (containing data):
@@ -20,12 +27,6 @@ class ArtistSearch extends React.Component {
   constructor(props) {
     super(props);
 
-    /**
-     * Populate component state (not Redux store) with preselected artist/album from route.
-     * If tracks album loads first we can't show release date - it comes with album data.
-     * Can use Promise.all to ensure we get both before rendering.
-     * See props.album.release_date in Tracks component below.
-     */
     this.state = {
       artistFilter: '',
       selectedArtist: { id: props.params.artist_id, name: props.params.artist },
@@ -189,98 +190,6 @@ class ArtistSearch extends React.Component {
     );
   }
 }
-
-/**
- * Stateless functional components
- * =========================================
- */
-
-/**
- *  These components are so small they stay in the parent component file.
- *  When adding more markup for eg schema, aria etc it will probably be
- *  better so move them to separate files.
- */
-
-const Artists = (props) =>
-  props.artists && <div className='artists'>
-    <div className='title'>Search results:</div>{
-      props.artists.map((art, idx) => (
-        <Link to={ `/${ art.id }/${ props.slashToUnderscore(art.name) }` } key={ idx }> {art.name}</Link>)
-      )
-    }
-  </div>;
-
-
-const Albums = (props) =>
-  props.albums && <div className='albums'>
-    <div className='albums--title'>Search results for &lsquo;{props.artist.name}&rsquo;</div>
-    <div className='albums--title'>Albums</div>
-    <div className='albums--wrap'>
-      <div className='albums--grid'>{
-        props.albums.map((album, idx) => (
-          <div key={ idx } className='album--container'>
-            <Link
-              title={ album.title }
-              to={ `/${ props.artist.id }/${ props.slashToUnderscore(props.artist.name) }/${ album.id }/${ props.slashToUnderscore(album.title) }` }
-              className='primary_color'
-            >
-              <img src={ album.cover_medium } alt={ album.title } />
-              <div className='album--title'>{album.title}</div>
-            </Link>
-          </div>)
-        )}
-        <div className='placeholder album--container'></div>
-        <div className='placeholder album--container'></div>
-        <div className='placeholder album--container'></div>
-        <div className='placeholder album--container'></div>
-      </div>
-    </div>
-  </div>;
-
-
-const Tracks = (props) =>
-  props.tracks && <div className='tracks'>
-    <table>
-      <thead>
-        <tr>
-          <td>{
-          props.album &&
-            <div>
-              <img src={ props.album.cover_medium } alt={ `Album cover: ${ props.album && props.album.title }` } />
-            </div>
-          }
-          </td><td colSpan='5'>
-            <div className='tracks--title primary_color'>{props.album && props.album.title}</div>
-          </td></tr>
-        <tr>
-          <td />
-          <td className='rightAlign'>#</td>
-          <td>Title</td>
-          <td>Artist</td>
-          <td className='rightAlign'>Time</td>
-          <td>Released</td>
-        </tr>
-      </thead>
-
-      <tbody>{
-        props.tracks && props.tracks.map((track, idx) => (
-          <tr key={ idx }>
-            <td />
-            <td className='rightAlign'>{track.track_position}</td>
-            <td>{track.title}</td>
-            <td>{track.artist.name}</td>
-            <td className='rightAlign'>{props.secondsToMinutes(track.duration)}</td>
-            <td>{props.album
-              && props.album.release_date
-              && props.album.release_date.split('-')[0]}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>;
-
-// END COMPONENTS
 
 
 ArtistSearch.propTypes = {
