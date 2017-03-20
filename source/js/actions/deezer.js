@@ -22,9 +22,15 @@ export function loadArtists(artistName = '') {
   };
 }
 
-export function loadAlbums(artistId = 0) {
+export function loadAlbums(artistId = 0, clearTracks = true) {
   return (dispatch, getState, { axios }) => {
     dispatch({ type: 'LOAD_ALBUMS_REQUEST' });
+
+    // When loading albums and tracks when entering the app
+    // on an album url, album loading should clear tracks.
+    // http://localhost:3000/617/Frank%20Sinatra/9205669/London
+    if (clearTracks) {dispatch({ type: 'CLEAR_TRACKS' });}
+
     return axios.get(`/api/artist/${ artistId }/albums`)
       // Proxied: http://api.deezer.com/artist/1878/albums
       .then(res => {

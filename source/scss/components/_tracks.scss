@@ -12,7 +12,7 @@
   img {
     position: absolute;
     top: -150px;
-    left: 1.5 * $spacing;
+    left: $spacing;
     width: $cover-size;
     transition: top 0.2s
   }
@@ -24,6 +24,7 @@
 
   .tracks--title {
     @extend .title;
+    padding-left: 10px;
   }
 
   table {
@@ -45,10 +46,11 @@
 
     tbody {
       background: $color-background-lighter;
+      min-height: 1px // Fixes heigt issue with < 3 tracks.
     }
 
     td {
-      padding: $spacing $spacing $spacing-bottom 0;
+      padding: $spacing $spacing * 2 $spacing-bottom 0;
       border-bottom: $border-dark;
 
       &:nth-child(1) {  // Empty first column
@@ -59,25 +61,31 @@
       &:nth-child(2) {  // Track #
         border-bottom: none;
         padding-left: $spacing;
+        width: 50px;
       }
 
-      &:nth-child(3) {} // Title
+      &:nth-child(3) { // Title
+        width: 26%;
+      }
 
       &:nth-child(4) {  // Artist
-        min-width: 130px;
+        width: 18%;
       }
 
-      &:nth-child(5),   // Duration
-
-      &:nth-child(6) {  // Release
+      &:nth-child(5) {   // Duration
+        width: 10%;
         padding: $spacing $spacing*2 $spacing-bottom $spacing*2;
+      }
+      &:nth-child(6) {  // Release
+        width: 20%;
+        text-align: center;
       }
     }
   }
 
   // Cover image is positioned above track listing on small devices.
   // On larger devices cover image is positioned to the left
-  @media (min-width: 700px) {
+  @media (min-width: 820px) {
     img {
       top: $spacing;
     }

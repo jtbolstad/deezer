@@ -39,14 +39,15 @@ class ArtistSearch extends React.Component {
    * =========================================
    */
   componentDidMount() {
+
     // Load artist data if artist id is set
-    if (this.state.selectedArtist) {
+    if (this.state.selectedArtist.id) {
       this.props.dispatch(
-        loadAlbums(this.state.selectedArtist.id)
+        loadAlbums(this.state.selectedArtist.id, false)
       );
     }
     // Load album data if album id is set
-    if (this.state.selectedAlbum) {
+    if (this.state.selectedAlbum.id) {
       this.props.dispatch(
         loadTracks(this.state.selectedAlbum.id)
       );
@@ -70,7 +71,16 @@ class ArtistSearch extends React.Component {
       nextTitle: nextProps.params.album,
     };
 
-    if (album.prev !== album.next) {
+
+    if (artist.prev !== artist.next) {
+      this.props.dispatch(
+        loadAlbums(artist.next)
+      );
+      this.setState({ 'selectedArtist': { 'id': artist.next, 'name': artist.nextName } });
+      // Scroll back to top again when loading albums from new artist
+      // this.refs.scrollTop = 0;
+
+    } else if (album.prev !== album.next) {
       // Clear search field
       this.setState({ artistFilter: '' });
       this.props.dispatch(
@@ -78,13 +88,9 @@ class ArtistSearch extends React.Component {
       );
       this.setState({ 'selectedAlbum': { 'id': album.next, 'name': album.nextTitle } });
 
-    } else if (artist.prev !== artist.next) {
-      this.props.dispatch(
-        loadAlbums(artist.next)
-      );
-      this.setState({ 'selectedArtist': { 'id': artist.next, 'name': artist.nextName } });
     }
   }
+
 
 
   /**
@@ -115,11 +121,6 @@ class ArtistSearch extends React.Component {
   // Slashes in artist names or album titles messes up route handling, so replace them
   slashToUnderscore = (string) => string.replace('/', '%2F')
 
-  // Close search result on esc
-  tast = (event) =>{
-    console.log('tast', event);
-    // this.setState({artistFilter:''});
-  }
 
   /**
    * MAIN COMPONENT
@@ -131,10 +132,10 @@ class ArtistSearch extends React.Component {
       <div className="main">
 
         <div className='search' role='search'>
-          <form>
-            <input type='text' value={ this.state.artistFilter } onChange={ this.handleChange } onBlur={ this.tast('blur') } placeholder={ 'Search here' } />
+          <div className="form">
+            <input type='text' value={ this.state.artistFilter } onChange={ this.handleChange } placeholder={ 'Search here' } />
             <input type='button' value='Search' className='primary_background' />
-          </form>
+          </div>
         </div>
 
 
@@ -214,21 +215,27 @@ const Albums = (props) =>
   props.albums && <div className='albums'>
     <div className='albums--title'>Search results for &lsquo;{props.artist.name}&rsquo;</div>
     <div className='albums--title'>Albums</div>
-    <div className='albums--grid'>{
-      props.albums.map((album, idx) => (
-        <div key={ idx } className='album--container'>
-          <Link
-            title={ album.title }
-            to={ `/${ props.artist.id }/${ props.slashToUnderscore(props.artist.name) }/${ album.id }/${ props.slashToUnderscore(album.title) }` }
-            className='primary_color'
-          >
-            <img src={ album.cover_medium } alt={ album.title } />
-            <div className='album--title'>{album.title}</div>
-          </Link>
-        </div>)
-      )}
+    <div className='albums--wrap'>
+      <div className='albums--grid'>{
+        props.albums.map((album, idx) => (
+          <div key={ idx } className='album--container'>
+            <Link
+              title={ album.title }
+              to={ `/${ props.artist.id }/${ props.slashToUnderscore(props.artist.name) }/${ album.id }/${ props.slashToUnderscore(album.title) }` }
+              className='primary_color'
+            >
+              <img src={ album.cover_medium } alt={ album.title } />
+              <div className='album--title'>{album.title}</div>
+            </Link>
+          </div>)
+        )}
+        <div className='placeholder album--container'></div>
+        <div className='placeholder album--container'></div>
+        <div className='placeholder album--container'></div>
+        <div className='placeholder album--container'></div>
+      </div>
     </div>
-    </div>;
+  </div>;
 
 
 const Tracks = (props) =>
@@ -251,7 +258,7 @@ const Tracks = (props) =>
           <td>Title</td>
           <td>Artist</td>
           <td className='rightAlign'>Time</td>
-          <td>Release</td>
+          <td>Released</td>
         </tr>
       </thead>
 
@@ -279,7 +286,6 @@ const Tracks = (props) =>
 ArtistSearch.propTypes = {
   params: React.PropTypes.object,
   dispatch: React.PropTypes.func,
-  isLoading: React.PropTypes.boolean,
   artists: React.PropTypes.array,
   albums: React.PropTypes.array,
   tracks: React.PropTypes.array,

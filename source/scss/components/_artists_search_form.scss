@@ -5,7 +5,7 @@
 
 .search {
 
-  form {
+  .form {
     display:flex
   }
 
@@ -21,7 +21,7 @@
 
   [type=text] {
     height: 50px;
-    width: 100%;
+    width: 80%;
     Xwidth: $app-width - $cover-size - 3 * $spacing;
     border: none;
     color: $color-text-regular;
