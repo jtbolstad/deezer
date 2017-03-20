@@ -11,7 +11,7 @@ import rootReducer from 'reducers';
 import Routes from 'routes';
 import DevTools from 'dev/redux-dev-tools';
 
-// Load SCSS
+// Load CSS
 import 'scss/app.scss';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -20,6 +20,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 let store = null;
 
 if (isProduction) {
+
   // In production adding only thunk middleware
   const middleware = applyMiddleware(thunk);
 
@@ -27,7 +28,9 @@ if (isProduction) {
     rootReducer,
     middleware
   );
+
 } else {
+
   // In development mode beside thunk
   // logger and DevTools are added
   const middleware = applyMiddleware(
@@ -42,9 +45,6 @@ if (isProduction) {
     enhancer
   );
 }
-
-
-// Render it to DOM - without <DevTools />
 
 ReactDOM.render(
   <Provider store={ store }>

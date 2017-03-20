@@ -11,9 +11,12 @@
 
   .artists {
 
+    width: calc(100vw - 6 * #{$spacing});
     @media (min-width: $breakpoint) {
-      width: calc(100vw - 257px);
-      max-width: 640px;
+
+      width: calc(100vw - 257px); // Should be calculated based on app-width/cover
+      max-width: 640px;           // Should be calculated based on app-width/cover
+      min-height: 180px;          // So we overlap 1st album/hide title for less noise in the view.
     }
 
     padding: $spacing*2 $spacing;

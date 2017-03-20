@@ -36,9 +36,7 @@
     transition: margin-top 0.2s;
 
     thead {
-
       background: $color-background;
-
       td {
         border: none;
       }
@@ -54,14 +52,19 @@
       border-bottom: $border-dark;
 
       &:nth-child(1) {  // Empty first column
-        width: $cover-size + $spacing*2;
+        width: 1px;
         border-bottom: none;
+        @media (min-width: $breakpoint) {
+          width: $cover-size + $spacing*2;
+        }
       }
 
       &:nth-child(2) {  // Track #
-        border-bottom: none;
         padding-left: $spacing;
-        width: 50px;
+        border-bottom: none;
+        @media (min-width: $breakpoint) {
+          width: 50px;
+        }
       }
 
       &:nth-child(3) { // Title
@@ -72,13 +75,15 @@
         width: 18%;
       }
 
-      &:nth-child(5) {   // Duration
-        width: 10%;
-        padding: $spacing $spacing*2 $spacing-bottom $spacing*2;
-      }
-      &:nth-child(6) {  // Release
-        width: 20%;
-        text-align: center;
+      @media (min-width: $breakpoint) {
+        &:nth-child(5) {   // Duration
+          width: 10%;
+          padding: $spacing $spacing*2 $spacing-bottom $spacing*2;
+        }
+        &:nth-child(6) {  // Release
+          width: 20%;
+          text-align: center;
+        }
       }
     }
   }

@@ -132,7 +132,12 @@ class ArtistSearch extends React.Component {
   /**
    * MAIN COMPONENT
    * =========================================
+   *
+   * The search form autocompletes by loading data from the backend api as
+   * the user enters more letters in the input field. Therefore the search
+   * button has no real function in this app.
    */
+
   render() {
     return (
 

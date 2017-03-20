@@ -5,7 +5,7 @@
 
 @import "base/config";
 @import "base/normalize";
-@import "base/global";
+@import "base/app";
 
 /**
  * Separate scss file for each component/sub-components.
@@ -14,7 +14,7 @@
  *   postioning, display/box-model, colour, text, other
  */
 
+@import "components/artistSearch";
+@import "components/artists";
 @import "components/albums";
-@import "components/artists_search_form";
-@import "components/artists_search_result";
 @import "components/tracks";

@@ -20,11 +20,15 @@
   }
 
   .albums--grid {
-    width: calc(100% - 10px);
+    width: calc(100% - 60px);
+    @media(min-width: $breakpoint) {
+      width: calc(100% - 10px);
+    }
     padding-left: $spacing;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
+    // Would be even better with minimum spacing between albums.
     justify-content: space-between;
   }
 
