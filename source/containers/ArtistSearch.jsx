@@ -1,9 +1,4 @@
 
-/**
- * ARTISTSEARCH - CONTAINER
- * =========================================
- */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { first, debounce } from 'lodash';
@@ -19,6 +14,8 @@ import Tracks from 'components/ArtistSearch/Tracks'
 
 
 /**
+ *  ARTIST SEARCH
+ *
  *  Main Component (containing data):
  *    ArtistSearch
  *
@@ -84,10 +81,9 @@ class ArtistSearch extends React.Component {
         loadAlbums(artist.next)
       );
       this.setState({ 'selectedArtist': { 'id': artist.next, 'name': artist.nextName } });
-      // Scroll back to top again when loading albums from new artist
-      // this.refs.scrollTop = 0;
 
     } else if (album.prev !== album.next) {
+
       // Clear search field
       this.setState({ artistFilter: '' });
       this.props.dispatch(
@@ -105,28 +101,48 @@ class ArtistSearch extends React.Component {
    * =========================================
    */
 
-  // Trigger api request to get artists
+
+  /**
+   * Trigger api request to get artists
+   */
   doSearch = () => {
     this.props.dispatch(
       loadArtists(this.state.artistFilter)
     );
   }
 
-  // Debounce search to avoid requests on every keystroke
+
+  /**
+   * Debounce search to avoid requests on every keystroke
+   */
   debouncedDoSearch = debounce(this.doSearch, 300);
 
-  // Handle keystrokes / input in search field
-  handleChange = (event) => {
-    const artistFilter = event.target.value;
+
+  /**
+   * Handle keystrokes / input in search field
+   * @param  {keyPressEvent} event
+   */
+  handleChange = (keyPressEvent) => {
+    const artistFilter = keyPressEvent.target.value;
     this.setState({ artistFilter }); // { artistFilter } = { artistFilter: artistFilter }
     this.debouncedDoSearch();
   }
 
-  // Convert seconds to "min:sec". Eg 207 -> "3:27"
+
+  /**
+   * Convert seconds to "min:sec"
+   * @param  {number} seconds
+   * @return {string} Track duration formatted as M:SS, eg 207 ->  "3:27"
+   */
   secondsToMinutes = (seconds) => `${ parseInt(seconds / 60, 10) }:${ (`0${ seconds % 60 }`).slice(-2) }`
 
-  // Slashes in artist names or album titles messes up route handling, so replace them
-  slashToUnderscore = (string) => string.replace('/', '%2F')
+
+  /**
+   * Slashes in artist names or album titles messes up route handling, so replace them
+   * @param  {pathname} string
+   * @return {string}
+   */
+  slashToUnderscore = (pathname) => pathname.replace('/', '%2F')
 
 
   /**
@@ -204,10 +220,20 @@ class ArtistSearch extends React.Component {
 
 
 ArtistSearch.propTypes = {
+
+  /** @type {object} Route parameters: artist id, artist name [, album id, album title ] */
   params: React.PropTypes.object,
+
+   /** @type {func} Dispatch funtion from Redux store */
   dispatch: React.PropTypes.func,
+
+  /** @type {array} Artist data from api. Mapped from state.  */
   artists: React.PropTypes.array,
+
+  /** @type {array} Album data from api. Mapped from state.  */
   albums: React.PropTypes.array,
+
+   /** @type {array} Track data from api. Mapped from state */
   tracks: React.PropTypes.array,
 };
 

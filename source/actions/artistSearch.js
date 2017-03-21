@@ -1,4 +1,10 @@
 
+/**
+ * Loads list of artists matching search field input
+ *
+ * @param  {String} artistName
+ * @return {Function} Action creator (thunk)
+ */
 export function loadArtists(artistName = '') {
   return (dispatch, getState, { axios }) => {
     dispatch({ type: 'LOAD_ARTISTS_REQUEST' });
@@ -22,6 +28,13 @@ export function loadArtists(artistName = '') {
   };
 }
 
+/**
+ * Loads albums data from API
+ *
+ * @param      {number}    artistId     The artist identifier
+ * @param      {boolean}   clearTracks  Clear tracks, but not on initial load
+ * @return     {Function}  Action creator (thunk)
+ */
 export function loadAlbums(artistId = 0, clearTracks = true) {
   return (dispatch, getState, { axios }) => {
     dispatch({ type: 'LOAD_ALBUMS_REQUEST' });
@@ -42,6 +55,12 @@ export function loadAlbums(artistId = 0, clearTracks = true) {
   };
 }
 
+/**
+ * Loads tracks.
+ *
+ * @param      {number}    albumId  The album identifier
+ * @return     {Function}  Action creator (thunk)
+ */
 export function loadTracks(albumId = 0) {
   return (dispatch, getState, { axios }) => {
     dispatch({ type: 'LOAD_TRACKS_REQUEST' });
