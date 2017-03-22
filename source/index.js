@@ -11,6 +11,9 @@ import rootReducer from 'reducers';
 import Routes from 'routes';
 import DevTools from 'dev/redux-dev-tools';
 
+// CSS-GRID
+// require('js/vendor/css-grid-polyfill.js');
+
 // Load CSS
 import 'scss/app.scss';
 

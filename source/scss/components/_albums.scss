@@ -20,17 +20,33 @@
   }
 
   .albums--grid {
-    width: calc(100% - 60px);
-    @media(min-width: $breakpoint) {
-      width: calc(100% - 10px);
-    }
-    padding-left: $spacing;
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    // Would be even better with minimum spacing between albums.
+    display: grid;
+    max-width: calc(100% - 10px);
+    grid-auto-flow: row;
+    grid-gap: 20px;
+    color: #444;
+    align-content: space-around;
     justify-content: space-between;
+
+    grid-template: 1fr repeat(3, 1fr) / repeat(2, 1fr);
+
+    /* 3 cols */
+    @media (min-width: 380px) {
+      grid-template: 1fr repeat(3, 1fr) / repeat(3, 1fr);
+    }
+
+    /* 4 cols */
+    @media (min-width: 500px) {
+      grid-template: 1fr repeat(3, 1fr) / repeat(4, 1fr);
+    }
+
+    /* 5 cols */
+    @media (min-width: 650px) {
+      grid-template: 1fr repeat(3, 1fr) / repeat(5, 1fr);
+    }
+
   }
+
 
   a:hover {
     text-decoration: underline;
@@ -56,11 +72,11 @@
   .album--container {
     float: left;
     overflow: hidden;
-    width: $cover-size;
+    // width: $cover-size;
     margin-bottom: $spacing * 2;
 
     img {
-      width: $cover-size;
+      // width: $cover-size;
       vertical-align: bottom;
     }
 
@@ -93,6 +109,7 @@
     width: auto;
     max-width: 10px;
     max-height: 10px;
+    padding-left: 10px;
   }
 
   .albums--wrap::-webkit-scrollbar-track {
