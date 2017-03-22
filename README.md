@@ -14,6 +14,8 @@ This is a React app fetching music data from Deezer's api, and presenting artist
 
 ## Notes
 
+A responsive solution for the album grid using the new CSS-grid option is in a branch called css-grid. This works in the latest versions of Chrome and Firefox. I have not yet added a polyfill to make this work in other browsers.
+
 Personally I prefer file lengths <300 lines, with 500 lines as an absolute maximum.
 
 Offline support for web apps are on the rise, with Progressive Web Apps. But because of very limited local storage for web browsers, this is less interesting for a music streaming app.
