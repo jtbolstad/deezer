@@ -48,7 +48,7 @@ const Tracks = (props) =>
             </div>
           }
           </td><td colSpan='5'>
-            <div className='tracks--title primary_color'>{props.album && props.album.title}</div>
+            <div className='tracks__title primaryColor'>{props.album && props.album.title}</div>
           </td></tr>
         <tr>
           <td />

@@ -35,20 +35,20 @@ import { Link } from 'react-router';
 
 const Albums = (props) =>
   props.albums && <div className='albums'>
-    <div className='albums--title'>Search results for &lsquo;{props.artist.name}&rsquo;</div>
-    <div className='albums--title'>Albums</div>
-    <div className='albums--wrap'>
-      <div className='albums--grid'>{
+    <div className='albums__title'>Search results for &lsquo;{props.artist.name}&rsquo;</div>
+    <div className='albums__title'>Albums</div>
+    <div className='albums__wrap'>
+      <div className='albums__grid'>{
 
         props.albums.map((album, idx) => (
-          <div key={ idx } className='album--container'>
+          <div key={ idx } className='album__container'>
             <Link
               title={ album.title }
               to={ `/${ props.artist.id }/${ props.slashToUnderscore(props.artist.name) }/${ album.id }/${ props.slashToUnderscore(album.title) }` }
-              className='primary_color'
+              className='primaryColor'
             >
               <img src={ album.cover_medium } alt={ album.title } />
-              <div className='album--title'>{album.title}</div>
+              <div className='album__title'>{album.title}</div>
             </Link>
           </div>)
         )}
@@ -56,10 +56,10 @@ const Albums = (props) =>
         { /* Invisible placeholders so flex-box "justify-content:space-between"
            * works on rows with < 5 items. (First or last row.)
            */}
-        <div className='placeholder album--container'></div>
-        <div className='placeholder album--container'></div>
-        <div className='placeholder album--container'></div>
-        <div className='placeholder album--container'></div>
+        <div className='placeholder album__container'></div>
+        <div className='placeholder album__container'></div>
+        <div className='placeholder album__container'></div>
+        <div className='placeholder album__container'></div>
 
       </div>
     </div>

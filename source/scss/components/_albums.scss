@@ -13,19 +13,32 @@
    * Would take some more time to find the optimal pattern for this.
    */
 
-  .albums--wrap {
-    max-height: 390px;
+  .albums__wrap {
+    max-height: 430px;
     overflow-y: auto;
     width: calc(100% + 20px);
   }
 
-  .albums--grid {
+  .albums__grid {
     display: grid;
     max-width: calc(100% - 10px);
     grid-auto-flow: row;
     grid-gap: 20px;
     color: #444;
     align-content: space-around;
+
+  // .albums__grid {
+  //   width: calc(100% - 60px);
+  //   @media(min-width: 500px) {
+  //     width: calc(100% - 10px);
+  //   }
+  //   display: flex;
+  //   flex-flow: row;
+  //   flex-wrap: wrap;
+
+
+    // Would be even better with minimum spacing between albums.
+
     justify-content: space-between;
 
     grid-template: 1fr repeat(3, 1fr) / repeat(2, 1fr);
@@ -47,11 +60,10 @@
 
   }
 
-
   a:hover {
     text-decoration: underline;
   }
-  .albums--title {
+  .albums__title {
     @extend .title;
     margin: ($spacing * 2) 0 ($spacing-bottom * 2);
 
@@ -69,7 +81,7 @@
     }
   }
 
-  .album--container {
+  .album__container {
     float: left;
     overflow: hidden;
     // width: $cover-size;
@@ -77,6 +89,23 @@
 
     img {
       // width: $cover-size;
+// =======
+//   .album__container {
+//     float: left;
+//     overflow: hidden;
+//     width: 100%;
+//     min-width: 115px;
+//     max-width: 150px;
+
+//     margin-right: $spacing;
+//     Xpadding-right: $spacing;
+//     Xpadding-left: $spacing;
+
+//     margin-bottom: $spacing * 2;
+
+//     img {
+//       width: 100%;
+// >>>>>>> master
       vertical-align: bottom;
     }
 
@@ -94,7 +123,28 @@
     }
   }
 
-  .album--title {
+  a:hover {
+    text-decoration: underline;
+  }
+  .albums__title {
+    @extend .title;
+    margin: ($spacing * 2) 0 ($spacing-bottom * 2);
+
+    &:nth-child(1) { // First title
+      margin-top: $spacing * 5;
+      padding-bottom: $spacing * 2;
+      border-bottom: $border-light;
+      color: $color-text-bright;
+    }
+
+    &:nth-child(2) { // Second title
+      padding-left: $spacing;
+      color: $color-contrast;
+      text-transform: uppercase;
+    }
+  }
+
+  .album__title {
     height: 32px;
     margin-top: $spacing;
     overflow: hidden;
@@ -105,20 +155,20 @@
 
   // SCROLLBAR
 
-  .albums--wrap::-webkit-scrollbar {
+  .albums__wrap::-webkit-scrollbar {
     width: auto;
     max-width: 10px;
     max-height: 10px;
     padding-left: 10px;
   }
 
-  .albums--wrap::-webkit-scrollbar-track {
+  .albums__wrap::-webkit-scrollbar-track {
     background: $color-text-regular;
     border-radius: $rounded-corners;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   }
 
-  .albums--wrap::-webkit-scrollbar-thumb {
+  .albums__wrap::-webkit-scrollbar-thumb {
     background-color: #444;
     border-radius: $rounded-corners;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);

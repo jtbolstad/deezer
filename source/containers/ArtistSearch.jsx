@@ -162,7 +162,7 @@ class ArtistSearch extends React.Component {
         <div className='search' role='search'>
           <div className="form">
             <input type='text' value={ this.state.artistFilter } onChange={ this.handleChange } placeholder={ 'Search here' } />
-            <input type='button' value='Search' className='primary_background' />
+            <input type='button' value='Search' className='primaryBackground' />
           </div>
         </div>
 
