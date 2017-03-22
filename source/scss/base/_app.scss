@@ -30,8 +30,14 @@ a {
   text-align: right;
 }
 
+// EXTENDS
 .title {
   font-size: $font-size-l;
+}
+.oneLineOverflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 
