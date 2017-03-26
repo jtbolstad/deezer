@@ -28,6 +28,7 @@
     align-content: space-around;
     justify-content: space-between;
 
+    /* 2 cols - default */
     grid-template: 1fr repeat(3, 1fr) / repeat(2, 1fr);
 
     /* 3 cols */
@@ -78,8 +79,9 @@
     }
 
     /**
-     * Four invisible placeholders are added to the end
-     * of the grid to keep "justify-content:space-between" happy
+     * Four invisible placeholders are added to the end of
+     * the grid to keep "justify-content:space-between" happy.
+     * Must be increased if > 5 columns. (Or added prgramatically.)
      */
     &.placeholder {
       visibility: hidden;

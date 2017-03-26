@@ -63,8 +63,3 @@ export default function deezer(state = initialState, action) {
       return state;
   }
 }
-
-// Selector functions (not currently used)
-export const selectArtists = state => state.deezer.artists;
-export const selectAlbums = state => state.deezer.albums;
-export const selectTracks = state => state.deezer.tracks;

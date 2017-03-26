@@ -114,6 +114,9 @@ class ArtistSearch extends React.Component {
 
   /**
    * Debounce search to avoid requests on every keystroke
+   * Search triggers 300ms after last keystroke.
+   * (Throttle will trigger search on first keystroke, then
+   * wait the specified time.)
    */
   debouncedDoSearch = debounce(this.doSearch, 300);
 
@@ -169,8 +172,9 @@ class ArtistSearch extends React.Component {
 
         { // SEARCH RESULT
           // Display only if artistFilter is set
-        this.state.artistFilter &&
-        this.props.artists && this.props.artists.length > 0 &&
+        this.state.artistFilter
+        && this.props.artists
+        && this.props.artists.length > 0 &&
           <div className='searchResult'>
             <div className='arrow' />
             <Artists
@@ -190,7 +194,8 @@ class ArtistSearch extends React.Component {
 
 
         { // ALBUM LISTING
-          this.props.albums && this.props.albums.length > 0 &&
+          this.props.albums
+          && this.props.albums.length > 0 &&
           <Albums
             artist={ this.state.selectedArtist }
             albums={ this.props.albums }
@@ -201,7 +206,8 @@ class ArtistSearch extends React.Component {
 
 
         { // TRACK LISTING
-          this.props.tracks && this.props.tracks.length > 0 &&
+          this.props.tracks
+          && this.props.tracks.length > 0 &&
           <Tracks
             artist={ this.state.selectedArtist }
             album={ first(this.props.albums.filter(
@@ -238,6 +244,10 @@ ArtistSearch.propTypes = {
 };
 
 
+/**
+ * Makes Redux state available as props in the component
+ * (ref initialState in reducers/artistSearch.js)
+ */
 const mapStateToProps = state => ({
   artists: state.deezer.artists,
   albums: state.deezer.albums,
