@@ -26,19 +26,6 @@
     grid-gap: 20px;
     color: #444;
     align-content: space-around;
-
-  // .albums__grid {
-  //   width: calc(100% - 60px);
-  //   @media(min-width: 500px) {
-  //     width: calc(100% - 10px);
-  //   }
-  //   display: flex;
-  //   flex-flow: row;
-  //   flex-wrap: wrap;
-
-
-    // Would be even better with minimum spacing between albums.
-
     justify-content: space-between;
 
     grid-template: 1fr repeat(3, 1fr) / repeat(2, 1fr);
@@ -84,28 +71,9 @@
   .album__container {
     float: left;
     overflow: hidden;
-    // width: $cover-size;
     margin-bottom: $spacing * 2;
 
     img {
-      // width: $cover-size;
-// =======
-//   .album__container {
-//     float: left;
-//     overflow: hidden;
-//     width: 100%;
-//     min-width: 115px;
-//     max-width: 150px;
-
-//     margin-right: $spacing;
-//     Xpadding-right: $spacing;
-//     Xpadding-left: $spacing;
-
-//     margin-bottom: $spacing * 2;
-
-//     img {
-//       width: 100%;
-// >>>>>>> master
       vertical-align: bottom;
     }
 
