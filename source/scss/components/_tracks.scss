@@ -68,12 +68,12 @@
       }
 
       &:nth-child(3) { // Title
-        @extend .oneLineOverflow;
+        // @extend .oneLineOverflow;
         width: 26%;
       }
 
       &:nth-child(4) {  // Artist
-        @extend .oneLineOverflow;
+        // @extend .oneLineOverflow;
         width: 18%;
       }
 
