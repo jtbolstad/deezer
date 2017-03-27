@@ -27,14 +27,8 @@ import Tracks from 'components/ArtistSearch/Tracks'
 
 class ArtistSearch extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      artistFilter: '',
-      selectedArtist: { id: props.params.artist_id, name: props.params.artist },
-      selectedAlbum: { id: props.params.album_id, title: props.params.album },
-    };
+  state = {
+    artistFilter: ''
   }
 
 
@@ -45,15 +39,15 @@ class ArtistSearch extends React.Component {
   componentDidMount() {
 
     // Load artist data if artist id is set
-    if (this.state.selectedArtist.id) {
+    if (this.props.params.artist_id) {
       this.props.dispatch(
-        loadAlbums(this.state.selectedArtist.id, false)
+        loadAlbums(this.props.params.artist_id, false)
       );
     }
     // Load album data if album id is set
-    if (this.state.selectedAlbum.id) {
+    if (this.props.params.album_id) {
       this.props.dispatch(
-        loadTracks(this.state.selectedAlbum.id)
+        loadTracks(this.props.params.album_id)
       );
     }
   }
@@ -80,7 +74,7 @@ class ArtistSearch extends React.Component {
       this.props.dispatch(
         loadAlbums(artist.next)
       );
-      this.setState({ 'selectedArtist': { 'id': artist.next, 'name': artist.nextName } });
+      // this.setState({ 'selectedArtist': { 'id': artist.next, 'name': artist.nextName } });
 
     } else if (album.prev !== album.next) {
 
@@ -89,7 +83,7 @@ class ArtistSearch extends React.Component {
       this.props.dispatch(
         loadTracks(album.next)
       );
-      this.setState({ 'selectedAlbum': { 'id': album.next, 'name': album.nextTitle } });
+      // this.setState({ 'selectedAlbum': { 'id': album.next, 'name': album.nextTitle } });
 
     }
   }
@@ -158,6 +152,10 @@ class ArtistSearch extends React.Component {
    */
 
   render() {
+
+    const selectedArtist = { id: this.props.params.artist_id, name: this.props.params.artist };
+    const selectedAlbum = { id: this.props.params.album_id, title: this.props.params.album };
+
     return (
 
       <div className="main">
@@ -197,7 +195,7 @@ class ArtistSearch extends React.Component {
           this.props.albums
           && this.props.albums.length > 0 &&
           <Albums
-            artist={ this.state.selectedArtist }
+            artist={ selectedArtist }
             albums={ this.props.albums }
             slashToUnderscore={ this.slashToUnderscore }
             dispatch={ this.props.dispatch }
@@ -209,9 +207,9 @@ class ArtistSearch extends React.Component {
           this.props.tracks
           && this.props.tracks.length > 0 &&
           <Tracks
-            artist={ this.state.selectedArtist }
+            artist={ selectedArtist }
             album={ first(this.props.albums.filter(
-              el => el.id === parseInt(this.state.selectedAlbum.id, 10)))
+              el => el.id === parseInt(selectedAlbum.id, 10)))
             }
             tracks={ this.props.tracks }
             dispatch={ this.props.dispatch }
