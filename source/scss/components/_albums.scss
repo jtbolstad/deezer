@@ -28,22 +28,27 @@
     align-content: space-around;
     justify-content: space-between;
 
+    /**
+     * CSS grid columns can probably be done without media queries,
+     * using minmax instead
+     */
+
     /* 2 cols - default */
-    grid-template: 1fr repeat(3, 1fr) / repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 
     /* 3 cols */
     @media (min-width: 380px) {
-      grid-template: 1fr repeat(3, 1fr) / repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
 
     /* 4 cols */
     @media (min-width: 500px) {
-      grid-template: 1fr repeat(3, 1fr) / repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
     /* 5 cols */
     @media (min-width: 650px) {
-      grid-template: 1fr repeat(3, 1fr) / repeat(5, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
 
   }
