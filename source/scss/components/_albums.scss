@@ -19,38 +19,18 @@
     width: calc(100% + 20px);
   }
 
+  /**
+   * CSS grid columns without media queries, using minmax instead
+   */
   .albums__grid {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     max-width: calc(100% - 10px);
     grid-auto-flow: row;
     grid-gap: 20px;
     color: #444;
     align-content: space-around;
     justify-content: space-between;
-
-    /**
-     * CSS grid columns can probably be done without media queries,
-     * using minmax instead
-     */
-
-    /* 2 cols - default */
-    grid-template-columns: repeat(2, 1fr);
-
-    /* 3 cols */
-    @media (min-width: 380px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* 4 cols */
-    @media (min-width: 500px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    /* 5 cols */
-    @media (min-width: 650px) {
-      grid-template-columns: repeat(5, 1fr);
-    }
-
   }
 
   a:hover {
