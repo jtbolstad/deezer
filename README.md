@@ -74,7 +74,7 @@ $ npm start
 Windows has some problems with Webpack Dashboard. Run webpack-dev-server direktly instead:
 
 ```
-$ npm run Lstart-win
+$ npm run start-win
 ```
 
 Visit `http://localhost:3000/` from your browser of choice.
